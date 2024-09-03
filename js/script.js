@@ -6,7 +6,7 @@ const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
-const botaoJogarNovamente = document.querySelector("..novamente-btn"); /*add*/
+const botaoJogarNovamente = document.querySelector(".novamente-btn"); /*add*/
 
 let atual = 0; 
 let perguntaAtual;
@@ -46,7 +46,7 @@ function mostraResultado(){
     botaoJogarNovamente.addEventListener("click", jogarNovamente()); /*add*/
 }
 
-function jogarNoovamente(){
+function jogarNovamente(){
     aual = 0;
     historiaFinal = "";
     mostraPergunta();
