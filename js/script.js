@@ -1,31 +1,74 @@
-import {aleatorio, nome} from './aleatorio.js';
-import {perguntas} from './perguntas.js';
-
 const caixaPrincipal = document.querySelector(".caixa-principal");
 const caixaPerguntas = document.querySelector(".caixa-perguntas");
 const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
-const botaoJogarNovamente = document.querySelector(".novamente"-btn);
-const botaoiniciar = document.querySelector(".iniciar-btn);
-const telaInicial = document.querySelector(".tela-inical");                                            
+
+const perguntas = [
+    {
+        enunciado: "Pergunta 1",
+        alternativas: [
+            {
+                texto: "Alternativa 1 da pergunta 1",
+                afirmacao: [
+                    "afirmacao 1",
+                    "afirmacao 2"
+                    ]
+            },
+            {
+                texto: "Alternativa 2 da pergunta 1",
+                afirmacao: [
+                    "afirmacao 1",
+                    "afirmacao 2"
+                    ]
+            }           
+            
+        ]
+    },
+    {
+        enunciado: "Pergunta 2",
+        alternativas: [
+            {
+                texto:"Alternativa 1 da pergunta 2",
+                afirmacao: [
+                    "afirmacao 1",
+                    "afirmacao 2"
+                    ]
+            },
+            {
+                texto: "Alternativa 2 da pergunta 2",
+                afirmacao: [
+                    "afirmacao 1",
+                    "afirmacao 2"
+                    ]
+            }
+        ]
+    },
+    {
+        enunciado: "Pergunta 3",
+        alternativas: [
+            {
+                texto:"Alternativa 1 da pergunta 3",
+                afirmacao: [
+                    "afirmacao 1",
+                    "afirmacao 2"
+                    ]
+            },
+            {
+                texto:"Alternativa 2 da pergunta 3",
+                afirmacao: [
+                    "afirmacao 1",
+                    "afirmacao 2"
+                    ]
+            }
+            
+        ]
+    },
+];
 
 let atual = 0; 
 let perguntaAtual;
 let historiaFinal = "";
-
-botaoIniciar.addEventListener('click, iniciaJOgo');
-
-function inicialJogo() {
-    atual = 0;
-    historiaFinal = "";
-    telaInicial.style.display = none;
-    caixaPerguntas.classlist.remove("mostrar");
-    caixaAlternativas.classlist.remove("mostrar");
-    caixaResultado.classlist.remove("mostrar");
-    mostraPergunta();
-}
-
 
 function mostraPergunta() {
     if(atual >= perguntas.length){
@@ -48,7 +91,7 @@ function mostraAlternativas(){
 }
 
 function respostaSelecionada(opcaoSelecionada){
-    const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
+    const afirmacoes = opcaoSelecionada.afirmacao;
     historiaFinal += afirmacoes + " ";
     atual++;
     mostraPergunta();
@@ -57,11 +100,7 @@ function respostaSelecionada(opcaoSelecionada){
 function mostraResultado(){
     caixaPerguntas.textContent = "Em 2049...";
     textoResultado.textContent = historiaFinal;
-    caixaAlternativas.textContent = "";
-    botaoJogarNovamente.addEventlistener("click", jogarNovamente());
+    caixaAlternativas.textContent = ""; 
 }
-function jogarNovamente(){
-    atual=0 ;
-    historiaFinal = '';
-    mostraPergunta();
-}
+
+mostraPergunta();
